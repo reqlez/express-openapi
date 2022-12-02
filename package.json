@@ -1,8 +1,8 @@
 {
-  "name": "@express/openapi",
-  "version": "0.0.0",
+  "name": "@pip-did/express-openapi",
+  "version": "1.0.0",
   "description": "Middleware for generating OpenAPI/Swagger documentation for your Express app",
-  "author": "Wes Todd <wes@wesleytodd.com>",
+  "author": "Wes Todd; forked by Petra Drevensek",
   "keywords": [
     "express",
     "openapi",

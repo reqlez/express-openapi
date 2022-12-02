@@ -1,6 +1,7 @@
 ## Fork details
 This fork fixes a bug in original repo that doesn't seem to be maintained anymore, yet it is still the best option 
 to add openapi to an express application. 
+This bug fixes enables [use of a dynamic route with nested routers](https://github.com/wesleytodd/express-openapi/issues/20). 
 
 # Express OpenAPI
 
