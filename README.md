@@ -1,3 +1,7 @@
+## Fork details
+This fork fixes a bug in original repo that doesn't seem to be maintained anymore, yet it is still the best option 
+to add openapi to an express application. 
+
 # Express OpenAPI
 
 [![NPM Version](https://badgen.net/npm/v/@wesleytodd/openapi)](https://npmjs.org/package/@wesleytodd/openapi)
