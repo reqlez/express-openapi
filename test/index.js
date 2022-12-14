@@ -6,7 +6,6 @@ const supertest = require('supertest')
 const express = require('express')
 const SwaggerParser = require('swagger-parser')
 const openapi = require('../')
-const { name } = require('../package.json')
 
 function logDocument (doc) {
   console.log(util.inspect(doc, { depth: null }))
