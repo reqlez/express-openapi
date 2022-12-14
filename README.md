@@ -3,7 +3,7 @@ This is a fork of the original repo that fixes some issues with generating opena
 doesn't seem to be maintained anymore, but I like the implementation. 
 Namely, it fixes two bugs: 
 - enables [use of a dynamic route with nested routers](https://github.com/wesleytodd/express-openapi/issues/20).
-- fixes missing parameters that are defined as a reference (not even sure if this was reported in the original repo)
+- fixes missing parameters that are defined as a reference (note that this works if you name referenced parameters the same as the 'name' field of the path parameter) 
 
 This implementation is available as a npm package "@pip-did/express-openapi".
 

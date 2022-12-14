@@ -12,7 +12,7 @@ function logDocument (doc) {
   console.log(util.inspect(doc, { depth: null }))
 }
 
-suite(name, function () {
+suite('openapi_test', function () {
   test('accept no options', function () {
     const oapi = openapi()
     assert.strictEqual(oapi.routePrefix, openapi.defaultRoutePrefix)
@@ -458,6 +458,80 @@ suite(name, function () {
             api.paths['/sub-route/{test1}/sub-sub-route/{test2}/{test3}/endpoint'].get.responses[204].description,
             'Successful response'
           )
+
+          done()
+        })
+      })
+  })
+
+  test('support multiple reference parameters', (done) => {
+    const app = express()
+    const router = express.Router()
+    const oapi = openapi()
+
+    oapi.component('parameters', 'testy_1', {
+      name: 'Test one',
+      description: 'Test parameter one',
+      in: 'path',
+      schema: {
+        type: 'string'
+      }
+    })
+    oapi.component('parameters', 'testy_2', {
+      name: 'Test two',
+      description: 'Test parameter two',
+      in: 'query',
+      schema: {
+        type: 'string'
+      }
+    })
+    oapi.component('parameters', 'testy_3', {
+      name: 'Test three',
+      description: 'The first one will always work, lets add another ...',
+      in: 'query',
+      schema: {
+        type: 'string'
+      }
+    })
+
+    const schema = oapi.path({
+      parameters: [
+        { '$ref': '#/components/parameters/testy_1' },
+        { '$ref': '#/components/parameters/testy_2' },
+        { '$ref': '#/components/parameters/testy_3' }
+      ],
+      responses: {
+        204: {
+          description: 'Successful response',
+          content: {
+            'application/json': {}
+          }
+        }
+      }
+    })
+
+    router.get('/:testy_1', schema, (req, res) => {
+      res.status(204).send()
+    })
+
+    app.use(oapi)
+    app.use('/:unreferenced_param', router)
+
+    supertest(app)
+      .get(`${openapi.defaultRoutePrefix}.json`)
+      .expect(200, (err, res) => {
+        assert(!err, err)
+        SwaggerParser.validate(res.body, (err, api) => {
+          if (err) {
+            logDocument(api)
+
+            done(err)
+          }
+
+          assert(api.paths['/{unreferenced_param}/{testy_1}'])
+          assert(api.paths['/{unreferenced_param}/{testy_1}'].get)
+          assert(api.paths['/{unreferenced_param}/{testy_1}'].get.parameters)
+          assert(api.paths['/{unreferenced_param}/{testy_1}'].get.parameters.length === 4)
 
           done()
         })
