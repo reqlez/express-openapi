@@ -5,7 +5,7 @@ Namely, it fixes two bugs:
 - enables [use of a dynamic route with nested routers](https://github.com/wesleytodd/express-openapi/issues/20).
 - fixes missing parameters that are defined as a reference (not even sure if this was reported in the original repo)
 
-This implementation is available as a npm library "@pip-did/express-openapi".
+This implementation is available as a npm package "@pip-did/express-openapi".
 
 The rest of this readme is copied from the original repo, so to use this one just replace the npm library name.  
 
