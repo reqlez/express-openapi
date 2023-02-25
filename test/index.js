@@ -293,7 +293,7 @@ suite('openapi_test', function () {
     app.use(oapi)
     app.get('/:id', oapi.path({
       description: 'Get thing by id',
-      parameters: [ oapi.parameters('id') ],
+      parameters: [oapi.parameters('id')],
       responses: {
         204: {
           description: 'Successful response',
@@ -495,9 +495,9 @@ suite('openapi_test', function () {
 
     const schema = oapi.path({
       parameters: [
-        { '$ref': '#/components/parameters/testy_1' },
-        { '$ref': '#/components/parameters/testy_2' },
-        { '$ref': '#/components/parameters/testy_3' }
+        { $ref: '#/components/parameters/testy_1' },
+        { $ref: '#/components/parameters/testy_2' },
+        { $ref: '#/components/parameters/testy_3' }
       ],
       responses: {
         204: {
