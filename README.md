@@ -1,18 +1,20 @@
-## Fork details
+## PIP-DID Fork details:
 This is a fork of the original repo that fixes some issues with generating openapi docs, since the original repo 
 doesn't seem to be maintained anymore, but I like the implementation. 
 Namely, it fixes two bugs: 
 - enables [use of a dynamic route with nested routers](https://github.com/wesleytodd/express-openapi/issues/20).
 - fixes missing parameters that are defined as a reference (note that this works if you name referenced parameters the same as the 'name' field of the path parameter) 
 
-This implementation is available as a npm package "@pip-did/express-openapi".
+## REQLEZ fork details: updated libs to remove vulnerabilities and minor fixups 
+
+This implementation is available as a npm package "@reqlez/express-openapi".
 
 The rest of this readme is copied from the original repo, so to use this one just replace the npm library name.  
 
 # Express OpenAPI
 
-[![NPM Version](https://badgen.net/npm/v/@wesleytodd/openapi)](https://npmjs.org/package/@wesleytodd/openapi)
-[![NPM Downloads](https://badgen.net/npm/dm/@wesleytodd/openapi)](https://npmjs.org/package/@wesleytodd/openapi)
+[![NPM Version](https://badgen.net/npm/v/@reqlez/express-openapi)](https://npmjs.org/package/@reqlez/express-openapi)
+[![NPM Downloads](https://badgen.net/npm/dm/@reqlez/express-openapi)](https://npmjs.org/package/@reqlez/express-openapi)
 [![js-standard-style](https://badgen.net/badge/style/standard/green)](https://github.com/standard/standard)
 
 A middleware for generating and validating OpenAPI documentation from an Express app.
@@ -21,15 +23,6 @@ This middleware will look at the routes defined in your app and fill in as much 
 into an OpenAPI document.  Optionally you can also flesh out request and response schemas, parameters, and
 other parts of your api spec with path specific middleware.  The final document will be exposed as json
 served by the main middleware (along with component specific documents).
-
-## Note on package name
-
-This package documents itself as `@express/openapi`. This is because we (the Express TC) have been discussing
-adopting the npm scope for publishing "core maintained" middleware modules.  This is one such middleware.
-While we are working out the details of this I am publishing this module under my personal scope.  When
-that is resolved we will move it over to the main scope and I will deprecate this module.
-
-Install & usage step for now: `$ npm i @wesleytodd/openapi` & `const openapi = require('@wesleytodd/openapi')`
 
 ## Philosophy
 
@@ -43,13 +36,13 @@ both write great code, as well as have great documentation!
 ## Installation
 
 ```
-$ npm install --save @express/openapi
+$ npm install --save @reqlez/express-openapi
 ```
 
 ## Usage
 
 ```javascript
-const openapi = require('@express/openapi')
+const openapi = require('@reqlez/express-openapi')
 const app = require('express')()
 
 const oapi = openapi({
